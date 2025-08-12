@@ -1,0 +1,60 @@
+/* revenus.css */
+.revenus-container {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding-bottom: 40px;
+  margin-left: 20%
+}
+
+/* cartes récap */
+.card {
+  padding: 16px;
+  min-width: 180px;
+  flex: 1;
+  border-radius: 10px;
+}
+.card-title {
+  font-size: 13px;
+  color: #6b7280;
+}
+.card-value {
+  margin-top: 6px;
+  font-weight: 700;
+  color: #0f172a;
+}
+.card-sub {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 6px;
+}
+
+/* charts */
+.chart-card {
+  padding: 12px;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 320px;
+}
+.chart-title {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* table */
+.table-paper {
+  margin-top: 16px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* responsive tweaks */
+@media (max-width: 900px) {
+  .card {
+    min-width: auto;
+  }
+  .chart-card {
+    min-width: auto;
+  }
+}

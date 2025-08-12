@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Sidebar from "/Users/dell/Desktop/des mediapro/media-pro/src/components/sidebar";
 import "./commande.css";
-
 import {
   Box,
   Typography,
@@ -17,11 +16,14 @@ import {
   IconButton,
   Stack,
   Paper,
-  Divider
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions
 } from "@mui/material";
 import { Phone, Visibility, CheckCircle, Cancel } from "@mui/icons-material";
 
-// Fake données
+// Données fictives
 const initialOrders = [
   {
     id: 120,
@@ -30,7 +32,11 @@ const initialOrders = [
     type: "Animateur",
     date: "2025-08-12",
     status: "confirmed",
-    urgent: false
+    urgent: false,
+    email: "amine@example.com",
+    telephone: "+213 555 12 34 56",
+    adresse: "Oran, Algérie",
+    montant: "20,000 DA"
   },
   {
     id: 121,
@@ -39,7 +45,11 @@ const initialOrders = [
     type: "Voix-off",
     date: "2025-08-13",
     status: "pending",
-    urgent: true
+    urgent: true,
+    email: "sarah@example.com",
+    telephone: "+213 777 22 33 44",
+    adresse: "Alger, Algérie",
+    montant: "12,000 DA"
   },
   {
     id: 122,
@@ -48,7 +58,11 @@ const initialOrders = [
     type: "Produit",
     date: "2025-08-14",
     status: "canceled",
-    urgent: false
+    urgent: false,
+    email: "hamid@example.com",
+    telephone: "+213 661 44 55 66",
+    adresse: "Constantine, Algérie",
+    montant: "5,000 DA"
   }
 ];
 
@@ -58,8 +72,10 @@ export default function Commande() {
   const [selected, setSelected] = useState([]);
   const [search, setSearch] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState(null);
 
-  // Simulation mises à jour en temps réel
+  // Simulation ajout commande toutes les X minutes
   useEffect(() => {
     const timer = setInterval(() => {
       setOrders((prev) => [
@@ -71,7 +87,11 @@ export default function Commande() {
           type: "Formation",
           date: "2025-08-15",
           status: "pending",
-          urgent: false
+          urgent: false,
+          email: "client" + (prev.length + 1) + "@example.com",
+          telephone: "+213 600 00 00 00",
+          adresse: "Ville inconnue",
+          montant: "10,000 DA"
         }
       ]);
     }, 200000);
@@ -93,7 +113,7 @@ export default function Commande() {
   const pending = orders.filter((o) => o.status === "pending").length;
   const canceled = orders.filter((o) => o.status === "canceled").length;
 
-  // Gestion sélection
+  // Sélection
   const toggleSelect = (id) => {
     setSelected((prev) =>
       prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]
@@ -110,6 +130,7 @@ export default function Commande() {
     setSelected([]);
   };
 
+  // Rendu du statut
   const statusChip = (status) => {
     const colors = {
       confirmed: "success",
@@ -122,6 +143,17 @@ export default function Commande() {
       canceled: "Annulé"
     };
     return <Chip label={labels[status]} color={colors[status]} size="small" />;
+  };
+
+  // Ouvrir la fenêtre détail
+  const handleOpenDialog = (order) => {
+    setSelectedOrder(order);
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+    setSelectedOrder(null);
   };
 
   return (
@@ -196,11 +228,11 @@ export default function Commande() {
           </Stack>
         )}
 
-        {/* Tableau des commandes */}
+        {/* Tableau */}
         <Paper>
           <Table>
             <TableHead>
-              <TableRow>
+              <TableRow  >
                 <TableCell>
                   <Checkbox
                     checked={
@@ -216,14 +248,14 @@ export default function Commande() {
                     }
                   />
                 </TableCell>
-                <TableCell>ID</TableCell>
-                <TableCell>Client</TableCell>
-                <TableCell>Service</TableCell>
-                <TableCell>Type</TableCell>
-                <TableCell>Date</TableCell>
-                <TableCell>Statut</TableCell>
-                <TableCell>Urgent</TableCell>
-                <TableCell>Actions</TableCell>
+                <TableCell style={{color:"white"}} >ID</TableCell>
+                <TableCell style={{color:"white"}}>Client</TableCell>
+                <TableCell style={{color:"white"}}>Service</TableCell>
+                <TableCell style={{color:"white"}}>Type</TableCell>
+                <TableCell style={{color:"white"}}>Date</TableCell>
+                <TableCell style={{color:"white"}}>Statut</TableCell>
+                <TableCell style={{color:"white"}}>Urgent</TableCell>
+                <TableCell style={{color:"white"}}>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -249,7 +281,10 @@ export default function Commande() {
                     )}
                   </TableCell>
                   <TableCell>
-                    <IconButton color="primary">
+                    <IconButton
+                      color="primary"
+                      onClick={() => handleOpenDialog(o)}
+                    >
                       <Visibility />
                     </IconButton>
                     <IconButton color="success">
@@ -261,6 +296,33 @@ export default function Commande() {
             </TableBody>
           </Table>
         </Paper>
+
+        {/* Fenêtre Détails Commande */}
+        <Dialog open={openDialog} onClose={handleCloseDialog} maxWidth="sm" fullWidth>
+          <DialogTitle>Détails de la commande</DialogTitle>
+          <DialogContent dividers>
+            {selectedOrder && (
+              <>
+                <Typography><strong>ID :</strong> {selectedOrder.id}</Typography>
+                <Typography><strong>Client :</strong> {selectedOrder.client}</Typography>
+                <Typography><strong>Service :</strong> {selectedOrder.service}</Typography>
+                <Typography><strong>Type :</strong> {selectedOrder.type}</Typography>
+                <Typography><strong>Date :</strong> {selectedOrder.date}</Typography>
+                <Typography><strong>Statut :</strong> {statusChip(selectedOrder.status)}</Typography>
+                <Typography><strong>Urgent :</strong> {selectedOrder.urgent ? "Oui" : "Non"}</Typography>
+                <Typography><strong>Email :</strong> {selectedOrder.email}</Typography>
+                <Typography><strong>Téléphone :</strong> {selectedOrder.telephone}</Typography>
+                <Typography><strong>Adresse :</strong> {selectedOrder.adresse}</Typography>
+                <Typography><strong>Montant :</strong> {selectedOrder.montant}</Typography>
+              </>
+            )}
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseDialog} color="secondary">
+              Fermer
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Box>
     </Box>
   );
