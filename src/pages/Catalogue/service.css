@@ -1,0 +1,47 @@
+.services-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.service-card {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px !important;
+  background: white;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.stats-section {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px;
+  margin-top: 40px;
+  background: #f9f9f9;
+  border-radius: 15px;
+}
+
+.stat-box {
+  text-align: center;
+}
+
+.stat-box h5 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.content-service{
+    margin-left: 20%;
+}

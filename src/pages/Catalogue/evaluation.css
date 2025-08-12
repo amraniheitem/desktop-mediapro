@@ -1,0 +1,36 @@
+.eval-dashboard {
+  padding: 30px;
+  background-color: #f8f9fa;
+  margin-left: 20%;
+}
+
+.eval-title {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.stats-section .stat-card {
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+}
+
+.chart-section .card {
+  border-radius: 12px;
+}
+
+.ranking-section .ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.filters {
+  margin: 20px 0;
+}
+
+.table-section {
+  margin-top: 20px;
+  border-radius: 12px;
+}

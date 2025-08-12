@@ -1,0 +1,62 @@
+.dashboard {
+  flex: 1;
+  padding: 30px;
+  background: #ebebeb;
+  margin-left: 20%;
+
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  font-size: 14px;
+  text-align: center;
+  flex: 1;
+  max-width: 220px;
+}
+
+.charts {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.chart {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  flex: 1;
+  min-width: 300px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.chart img {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card-dash {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  font-size: 18px;
+  text-align: center;
+}

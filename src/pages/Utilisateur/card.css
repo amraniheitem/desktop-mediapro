@@ -1,0 +1,99 @@
+.card {
+    max-width: 90%; /* ← OPTIONNEL : limite la largeur à 550px si l'écran est grand */
+    height: 170px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-image: url('./Capture2.PNG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    transition: transform 0.3s ease;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+    margin-bottom: 20px;
+    margin-left: 5%;
+}
+
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.text {
+    text-align: left;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.card-wilaya {
+    font-size: 16px;
+    color: #fff;
+}
+
+.stat {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    margin-top: 0px; 
+ }
+
+
+.stat2 {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+}
+
+.event, .like {
+    text-align: center;
+}
+
+.event h3, .like h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+.event p, .like p {
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+}
+
+.ranking {
+    font-size: 18px;
+    font-weight: bold;
+    color: #D4A9FF;
+}
+.slach {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+

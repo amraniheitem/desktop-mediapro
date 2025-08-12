@@ -1,0 +1,81 @@
+/* commande.css */
+
+/* Zone principale */
+.dashboard {
+  background-color: #f9fafb;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Titres */
+.dashboard h4 {
+  font-weight: 700;
+}
+
+/* Barre de filtres */
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Boutons filtres */
+.filter-bar button {
+  text-transform: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  transition: all 0.2s ease-in-out;
+}
+.filter-bar button:hover {
+  background-color: #e5e7eb;
+}
+
+/* Tableau */
+.MuiTable-root {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.MuiTableCell-head {
+  background-color: #f3f4f6;
+  font-weight: bold;
+}
+.MuiTableRow-root:hover {
+  background-color: #f9fafb;
+  transition: background-color 0.2s;
+}
+
+/* Boutons actions */
+.MuiIconButton-root {
+  transition: all 0.2s ease-in-out;
+}
+.MuiIconButton-root:hover {
+  transform: scale(1.1);
+}
+
+/* Chips statistiques */
+.MuiChip-root {
+  font-weight: 500;
+}
+
+/* Sélection multiple */
+.bulk-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Badge urgent */
+.MuiChip-colorError {
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 10px;
+  }
+  .filter-bar {
+    flex-direction: column;
+  }
+}
